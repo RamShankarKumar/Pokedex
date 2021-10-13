@@ -3,7 +3,8 @@ import Pokecard from './Pokecard';
 import './Pokedex.css';
 
 class Pokedex extends Component{
-    static defaultProps = {
+    // This data is being overwritten by the data that Pokedex component is getting from Pokegame component.
+    static defaultProps = { 
         pokemon : [
             {id: 4, name: 'Charmander', type: 'fire', base_experience: 62},
             {id: 7, name: 'Squirtle', type: 'water', base_experience: 63},
@@ -18,6 +19,9 @@ class Pokedex extends Component{
     render(){
         return(
             <div className='Pokedex'>
+                <h1>Pokedex!</h1>
+                <h1>Total experiece; {this.props.exp}</h1>
+                <p>{this.props.isWinner ? 'Winner!' : 'Loser!'}</p>
                 <div className='Pokedex-cards'>
                     {this.props.pokemon.map((p) => {
                         return <Pokecard id={p.id} name={p.name} type={p.type} exp={p.base_experience} />
